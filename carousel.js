@@ -30,20 +30,38 @@ const slideWidth = slides[0].getBoundingClientRect().width;
 const setSlidePosition = (slide, index) => {
   slide.style.left = slideWidth * index + 'px';
 };
+
 slides.forEach(setSlidePosition);
+
+// function to control slide changes
+const moveToSlide = (track, currentSlide, targetSlide) => {
+  track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+  currentSlide.classList.remove('current-slide');
+  targetSlide.classList.add('current-slide');
+};
+
+// on click of left icon move slide to left
+previousButton.addEventListener('click', (event) => {
+  const currentSlide = track.querySelector('.current-slide');
+  console.log(currentSlide); //by console logging this, you can see all the properties of the element.
+  const previousSlide = currentSlide.previousElementSibling;
+  moveToSlide(track, currentSlide, previousSlide);
+});
 
 // on click of right icon, move slide to right
 nextButton.addEventListener('click', (event) => {
   const currentSlide = track.querySelector('.current-slide');
-  console.log(currentSlide);
+  // console.log(currentSlide);
   const nextSlide = currentSlide.nextElementSibling;
-  const amountToMove = nextSlide.style.left;
-  // console.log(amountToMove);
-  // move to next slide
-  track.style.transform = 'translateX(-' + amountToMove + ')';
-  currentSlide.classList.remove('current-slide');
-  nextSlide.classList.add('current-slide');
+
+  moveToSlide(track, currentSlide, nextSlide);
 });
 
-// on click of left icon move slide to left
 // on click of nav indicators, move to that slide
+dotsNav.addEventListener('click', (e) => {
+  // to find out what indicator was clickced
+  const targetDot = e.target.closest('button');
+  console.log('default test when not a button');
+  if (!targetDot) return;
+  console.log('clicked a button');
+});
