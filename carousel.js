@@ -40,12 +40,36 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
   targetSlide.classList.add('current-slide');
 };
 
+const updateDots = (currentDot, targetDot) => {
+  currentDot.classList.remove('current-slide');
+  targetDot.classList.add('current-slide');
+};
+
+const hideShowArrows = (slides, previousButton, nextButton, targetIndex) => {
+  if (targetIndex === 0) {
+    previousButton.classList.add('is-hidden');
+    nextButton.classList.remove('is-hidden');
+  } else if (targetIndex === slides.length - 1) {
+    previousButton.classList.remove('is-hidden');
+    nextButton.classList.add('is-hidden');
+  } else {
+    previousButton.classList.remove('is-hidden');
+    nextButton.classList.remove('is-hidden');
+  }
+};
+
 // on click of left icon move slide to left
 previousButton.addEventListener('click', (event) => {
   const currentSlide = track.querySelector('.current-slide');
   console.log(currentSlide); //by console logging this, you can see all the properties of the element.
   const previousSlide = currentSlide.previousElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const previousDot = currentDot.previousElementSibling;
+  const previousIndex = slides.findIndex((slide) => slide === previousSlide);
+
   moveToSlide(track, currentSlide, previousSlide);
+  updateDots(currentDot, previousDot);
+  hideShowArrows(slides, previousButton, nextButton, previousIndex);
 });
 
 // on click of right icon, move slide to right
@@ -53,15 +77,32 @@ nextButton.addEventListener('click', (event) => {
   const currentSlide = track.querySelector('.current-slide');
   // console.log(currentSlide);
   const nextSlide = currentSlide.nextElementSibling;
+  const currentDot = dotsNav.querySelector('.current-slide');
+  const nextDot = currentDot.nextElementSibling;
+  const nextIndex = slides.findIndex((slide) => slide === nextSlide);
 
   moveToSlide(track, currentSlide, nextSlide);
+  updateDots(currentDot, nextDot);
+  hideShowArrows(slides, previousButton, nextButton, nextIndex);
 });
 
 // on click of nav indicators, move to that slide
 dotsNav.addEventListener('click', (e) => {
   // to find out what indicator was clickced
   const targetDot = e.target.closest('button');
-  console.log('default test when not a button');
+  // console.log('default test when not a button');
   if (!targetDot) return;
-  console.log('clicked a button');
+  // console.log('clicked a button');
+  const currentSlide = track.querySelector('.current-slide');
+  const currentDot = dotsNav.querySelector('.current-slide');
+  // to return the index of the dot clicked on.
+  const targetIndex = dots.findIndex((dot) => dot === targetDot);
+  console.log(targetIndex);
+  const targetSlide = slides[targetIndex];
+
+  moveToSlide(track, currentSlide, targetSlide);
+
+  updateDots(currentDot, targetDot);
+
+  hideShowArrows(slides, previousButton, nextButton, targetIndex);
 });
