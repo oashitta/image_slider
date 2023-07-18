@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.image-carousel {
+  display: flex;
+  gap: 10px;
+  width: 59rem;
+  /* overflow-x: hidden; */
+  align-items: center;
+}
+
+.previous {
+  width: 10rem;
+  height: 100%;
+  align-self: center;
+  padding: 1rem;
+}
+
+.previous:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.next {
+  width: 10rem;
+  align-self: center;
+  padding: 1rem;
+}
+
+.next:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}

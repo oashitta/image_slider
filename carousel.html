@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iage Carousel</title>
+    <link rel="stylesheet" href="./styles2.css" />
+  </head>
+  <body>
+    <div class="carousel">
+      <button class="carousel__button carousel__button--left">
+        <img
+          width="50"
+          height="50"
+          src="https://img.icons8.com/ios/50/double-left.png"
+          alt="double-left"
+        />
+      </button>
+      <div class="carousel__track-container">
+        <ul class="carousel__track">
+          <li class="carousel__slide">
+            <img
+              class="carousel__image"
+              src="https://images.unsplash.com/photo-1688870550853-f5956b4c010d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEyfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+              alt="image 1"
+            />
+          </li>
+          <li class="carousel__slide">
+            <img
+              class="carousel__image"
+              src="https://images.unsplash.com/photo-1689198693318-113b8dc5dfbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEzfGJvOGpRS1RhRTBZfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+              alt="image 2"
+            />
+          </li>
+          <li class="carousel__slide">
+            <img
+              class="carousel__image"
+              src="https://images.unsplash.com/photo-1689332220916-3cb59b7b6314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+              alt="image 3"
+            />
+          </li>
+        </ul>
+      </div>
+      <button class="carousel__button carousel__button--right">
+        <img
+          class="carousel__image"
+          width="50"
+          height="50"
+          src="https://img.icons8.com/ios/50/double-right.png"
+          alt="double-right"
+        />
+      </button>
+
+      <div class="carousel__nav">
+        <button class="carousel__indicator current-slide"></button>
+        <button class="carousel__indicator"></button>
+        <button class="carousel__indicator"></button>
+      </div>
+    </div>
+
+    <script src="./carousel.js"></script>
+  </body>
+</html>
