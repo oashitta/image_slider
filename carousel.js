@@ -86,6 +86,49 @@ nextButton.addEventListener('click', (event) => {
   hideShowArrows(slides, previousButton, nextButton, nextIndex);
 });
 
+// add set interval
+// image should change after every 4 seconds
+// need a function to call every 4 seconds which changes the frame.
+const startSlideShowInterval = function () {
+  return setInterval(() => {
+    const currentSlide = track.querySelector('.current-slide');
+    const nextSlide = currentSlide.nextElementSibling || slides[0];
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const nextDot = currentDot.nextElementSibling || dots[0];
+    const nextIndex = slides.findIndex((slide) => slide === nextSlide);
+
+    moveToSlide(track, currentSlide, nextSlide);
+    updateDots(currentDot, nextDot);
+    hideShowArrows(slides, previousButton, nextButton, nextIndex);
+  }, 2000);
+};
+
+let intervalId = startSlideShowInterval();
+
+// const intervalId = setInterval(() => {
+//   const currentSlide = track.querySelector('.current-slide');
+//   const nextSlide = currentSlide.nextElementSibling || slides[0];
+//   const currentDot = dotsNav.querySelector('.current-slide');
+//   const nextDot = currentDot.nextElementSibling || dots[0];
+//   const nextIndex = slides.findIndex((slide) => slide === nextSlide);
+
+//   moveToSlide(track, currentSlide, nextSlide);
+//   updateDots(currentDot, nextDot);
+//   hideShowArrows(slides, previousButton, nextButton, nextIndex);
+// }, 2000);
+
+// Function to clear the interval when the previous button is clicked
+// previousButton.addEventListener('click', (event) => {
+//   clearInterval(intervalId);
+// });
+
+track.addEventListener('mouseenter', (event) => {
+  clearInterval(intervalId);
+});
+track.addEventListener('mouseleave', (event) => {
+  intervalId = startSlideShowInterval();
+});
+
 // on click of nav indicators, move to that slide
 dotsNav.addEventListener('click', (e) => {
   // to find out what indicator was clickced
