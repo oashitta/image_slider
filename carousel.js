@@ -100,7 +100,7 @@ const startSlideShowInterval = function () {
     moveToSlide(track, currentSlide, nextSlide);
     updateDots(currentDot, nextDot);
     hideShowArrows(slides, previousButton, nextButton, nextIndex);
-  }, 2000);
+  }, 4000);
 };
 
 let intervalId = startSlideShowInterval();
