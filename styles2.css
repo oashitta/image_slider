@@ -1,14 +1,21 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
 .carousel {
   position: relative;
   height: 600px;
   width: 70%;
   margin: 30px auto;
+}
+
+.carousel__slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .carousel__image {
@@ -28,13 +35,6 @@ body {
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-.carousel__slide {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 .carousel__button {
